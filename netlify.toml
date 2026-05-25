@@ -1,0 +1,21 @@
+[build]
+  publish = "."
+  command = ""
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  NODE_ENV = "production"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
