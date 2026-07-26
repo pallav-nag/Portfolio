@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Pallav Nag — Resume</title>
+<style>
+@page { size: Letter; margin: 0.5in 0.55in; }
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:Georgia,'Times New Roman',serif;font-size:9.1pt;line-height:1.22;color:#000}
+.name{text-align:center;font-size:19pt;font-weight:700;letter-spacing:.13em;margin-bottom:2pt}
+.contact{text-align:center;font-size:8.3pt;color:#111;margin-bottom:7pt}
+.contact a{color:#000;text-decoration:none}
+section{margin-bottom:5pt}
+section:last-child{margin-bottom:0}
+h2{font-size:9.8pt;font-weight:700;letter-spacing:.09em;text-transform:uppercase;border-bottom:1px solid #000;padding-bottom:1pt;margin-bottom:3.5pt}
+p{margin-bottom:2pt}
+p:last-child{margin-bottom:0}
+.job{margin-bottom:4pt}
+.job:last-child{margin-bottom:0}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12pt}
+.date{font-size:8.5pt;color:#222;white-space:nowrap}
+.sub{font-style:italic;font-size:8.8pt;color:#222;margin:1pt 0 2pt}
+ul{list-style:disc;margin:0 0 0 15pt}
+li{margin-bottom:1.5pt;padding-left:2pt}
+li:last-child{margin-bottom:0}
+.skill{margin-bottom:1.5pt;padding-left:13pt;text-indent:-13pt}
+.skill:last-child{margin-bottom:0}
+.edu-line{font-style:italic;font-size:8.8pt;color:#222;margin-top:1pt}
+</style>
+</head>
+<body>
+
+<div class="name">PALLAV NAG</div>
+<div class="contact">+91 7976785650 &nbsp;·&nbsp; pallavnag9@gmail.com &nbsp;·&nbsp; linkedin.com/in/pallavnag &nbsp;·&nbsp; github.com/pallav-nag &nbsp;·&nbsp; palnag.in</div>
+
+<section>
+  <h2>Summary</h2>
+  <p>Software Developer at Amadeus IT Group with 2 years of experience building backend and distributed systems for global airline operations. Delivered <strong>&euro;172K/year</strong> in combined cost savings through SLA and log-processing optimizations, cut <strong>90 developer-effort days</strong> via automation, and drove a <strong>70&ndash;80&times; reduction in AI token usage</strong>. Recognized with a <strong>Spot Award (Q3 2025)</strong> among a 40-person team for high-impact, independently owned work.</p>
+</section>
+
+<section>
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="row"><span><strong>Amadeus IT Group</strong> &middot; Software Developer 1</span><span class="date">Jul 2024 &ndash; Present &nbsp;|&nbsp; Bengaluru, India</span></div>
+    <div class="sub">Airline Departure Control &amp; Flight Management Systems</div>
+    <ul>
+      <li><strong>&euro;172K/year saved:</strong> Independently diagnosed and resolved a critical SLA breach (&euro;150K) and eliminated log-processing overhead (&euro;22K) in high-traffic airline operations services &mdash; traced the code paths, designed the fixes, and shipped to production.</li>
+      <li><strong>90 developer-effort days saved:</strong> Automated a previously manual reporting and data workflow, returning recurring engineering capacity to the team.</li>
+      <li><strong>70&ndash;80&times; AI token reduction:</strong> Drove org-wide adoption of AST-based subgraph extraction (Graphify), replacing exhaustive file loading to slash per-query LLM consumption.</li>
+      <li><strong>70% fewer security vulnerabilities:</strong> Integrated BlackDuck and Fortify scanning gates into the CI/CD pipeline, remediating critical issues proactively.</li>
+      <li><strong>Spot Award (Q3 2025):</strong> Recognized out of a 40-person team for ownership, technical depth, and consistent delivery across high-priority workstreams.</li>
+      <li>Led a core-service middleware upgrade, was primary POC for a zero-impact quarterly data migration, recovered undocumented legacy logic via log/DB flow tracing, and mentored new interns through internal knowledge sessions.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><span><strong>Amadeus IT Group</strong> &middot; Software Developer Intern</span><span class="date">Feb 2024 &ndash; Jul 2024 &nbsp;|&nbsp; Bengaluru, India</span></div>
+    <div class="sub">Real-Time Data Pipeline &mdash; Check-in to Flight Management Integration</div>
+    <ul>
+      <li>Designed and built an end-to-end, event-driven pipeline streaming real-time passenger and baggage updates from check-in to flight management, replacing batch-refresh polling with live change data capture.</li>
+      <li>Architected on Kafka Connect + Debezium + MongoDB; built the Java (JAX-RS) ingestion service and containerized the stack with Podman. Presented at internal showcase; outcomes shipped to the production roadmap.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+
+  <div class="job">
+    <div class="row"><span><strong>Systematic Momentum Scanner</strong> &middot; Nifty 200 positional quant scanner</span><span class="date">Python &middot; pandas &middot; SQLite &middot; Gemini</span></div>
+    <ul>
+      <li>Fetches NSE market and delivery data into SQLite and scores every Nifty 200 stock on 30-day momentum and 45-day trend horizons from ~15 technical/volume indicators; emails a sector-capped daily Top-10 with disaster-stop and hold-and-rotate levels.</li>
+      <li>Built a point-in-time backtesting harness (Information Coefficient, decile returns) reusing the production scorer; verified market-neutral alpha of <strong>+1.14%/pick (45d trend)</strong> and <strong>+0.54%/pick (30d momentum)</strong> vs Nifty 200 over 271 trading days (survivorship-biased, single regime, pre-cost). Gemini news/broker extraction is used as a downside-only risk gate, after an event study showed no tradable news edge.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="row"><span><strong>Optimal Code Review Agent Pipeline</strong> &middot; Multi-agent LLM PR reviewer</span><span class="date">Python &middot; Redis &middot; Graphify MCP</span></div>
+    <ul>
+      <li>Specialised agents (Static Analyser, LLM Reviewer, Test Suggester) coordinate via Redis and report through a Critic/Scorer; agents query a code graph via Graphify MCP instead of loading full files, cutting review context ~85% (~6K tokens/review) and returning one prioritised comment per pull request.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Technical Skills</h2>
+  <p class="skill"><strong>Languages:</strong> C++, SQL, Java, Python</p>
+  <p class="skill"><strong>Backend &amp; Frameworks:</strong> Java Spring Boot, REST APIs, Maven, Node.js</p>
+  <p class="skill"><strong>Data &amp; Messaging:</strong> Apache Kafka, Kafka Connect, Debezium (CDC), MongoDB, Redis, SQLite</p>
+  <p class="skill"><strong>AI &amp; Data:</strong> Multi-agent LLM pipelines, Gemini API, Graphify MCP, pandas/NumPy, backtesting (IC)</p>
+  <p class="skill"><strong>DevOps &amp; Cloud:</strong> Docker/Podman, AWS (Certified Cloud Practitioner &mdash; EC2, S3, IAM, RDS), CI/CD</p>
+  <p class="skill"><strong>Practices:</strong> Event-driven architecture, Distributed systems, Performance &amp; Reliability Engineering</p>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="row"><span><strong>Vellore Institute of Technology</strong> &middot; B.Tech, Computer Science Engineering</span><span class="date">2020 &ndash; 2024</span></div>
+  <div class="edu-line">GPA: 8.35 / 10 &middot; Coursework: Software Engineering, OS, Data Structures &amp; Algorithms, Computer Architecture</div>
+</section>
+
+<section>
+  <h2>Certifications</h2>
+  <div class="row"><span><strong>AWS Certified Cloud Practitioner</strong> &middot; Amazon Web Services</span><span class="date">Jul 2023 &ndash; Jul 2026</span></div>
+</section>
+
+</body>
+</html>
