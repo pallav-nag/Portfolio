@@ -124,10 +124,57 @@ footer{max-width:700px;margin:0 auto;padding:0 6vw 4rem;font-family:'Space Mono'
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--lime)}
 
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}
+
+/* ── TICKER ── */
+.ticker-wrap{overflow:hidden;background:var(--lime);padding:9px 0;position:relative;z-index:1;border-bottom:1px solid rgba(0,0,0,.15)}
+.ticker-track{display:flex;width:max-content;animation:ticker 24s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{white-space:nowrap;font-family:'Space Mono',monospace;font-size:.7rem;color:var(--bg);padding:0 1.6rem;letter-spacing:.05em;text-transform:uppercase;font-weight:700}
+.ticker-sep{color:rgba(5,8,16,.35);margin:0 .3rem}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── QUARTERLY ALPHA CHART ── */
+.qtr-chart{margin:1.6rem 0}
+.qtr-chart-label{font-family:'Space Mono',monospace;font-size:.64rem;color:var(--lime);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:6px}
+.qtr-chart-label::before{content:'//';color:var(--muted)}
+.qtr-row{display:flex;gap:1rem;padding:0 .2rem}
+.qtr-col{flex:1;display:flex;flex-direction:column;align-items:center}
+.qtr-pos{height:60px;width:100%;display:flex;align-items:flex-end;justify-content:center}
+.qtr-neg{height:18px;width:100%;display:flex;align-items:flex-start;justify-content:center}
+.qtr-baseline{width:100%;height:2px;background:var(--border2)}
+.qtr-bar{width:56%;border-radius:3px 3px 0 0;transform:scaleY(0);transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.qtr-bar.up{background:var(--lime);transform-origin:bottom}
+.qtr-bar.down{background:var(--coral);border-radius:0 0 3px 3px;transform-origin:top}
+.qtr-chart.visible .qtr-bar{transform:scaleY(1)}
+.qtr-col:nth-child(1) .qtr-bar{transition-delay:0s}
+.qtr-col:nth-child(2) .qtr-bar{transition-delay:.12s}
+.qtr-col:nth-child(3) .qtr-bar{transition-delay:.24s}
+.qtr-col:nth-child(4) .qtr-bar{transition-delay:.36s}
+.qtr-val{font-family:'Space Mono',monospace;font-size:.7rem;margin-top:.6rem}
+.qtr-val.pos{color:var(--lime)}
+.qtr-val.neg{color:var(--coral)}
+.qtr-lbl{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--muted);margin-top:.2rem;text-transform:uppercase;letter-spacing:.04em}
+
+/* ── LIVE DOT ── */
+.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--lime);margin-right:6px;animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
 @media (max-width:600px){
   .stat-row{gap:1rem}
   table{font-size:.78rem}
   th,td{padding:.5rem .5rem}
+  .qtr-row{gap:.5rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .reveal{transition:none}
+  .ticker-track{animation:none!important}
+  .qtr-bar{transition:none!important}
+  .live-dot{animation:none!important}
 }
 </style>
 </head>
@@ -138,24 +185,49 @@ footer a:hover{color:var(--lime)}
   <a href="/#contact" class="cta-link">Say hi →</a>
 </div>
 
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Nifty 500 · Positional Trend <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Alpha +3.32% Pre-cost <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">+2.82% Net of Cost <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Win Rate 46.7% <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">T-Stat +7.1 <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Hold 60 Trading Days <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">280d Backtest <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">1,610 Trades <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Cap-Tier Partitioned <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Edge Stable <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Nifty 500 · Positional Trend <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Alpha +3.32% Pre-cost <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">+2.82% Net of Cost <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Win Rate 46.7% <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">T-Stat +7.1 <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Hold 60 Trading Days <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">280d Backtest <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">1,610 Trades <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Cap-Tier Partitioned <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Edge Stable <span class="ticker-sep">✦</span></span>
+  </div>
+</div>
+
 <main>
   <div class="eyebrow"><span class="eyebrow-dot"></span> Case study · Quant + AI</div>
   <h1>The Backtest That Changed the Strategy</h1>
   <p class="subtitle">How point-in-time validation on a Nifty 500 momentum scanner killed a tight-stop swing design, and what replaced it, verified two independent ways.</p>
   <div class="meta">By <span>Pallav Nag</span> · <span>Aug 2026</span> · <span>~6 min read</span></div>
 
-  <div class="tldr">
+  <div class="tldr reveal">
     <div class="tldr-label">TL;DR</div>
     <p>I built a rules-based scanner that ranks the Nifty 500 every evening on ~15 technical/volume signals, partitioned across large, mid and small cap. The first version used tight stops and fixed profit targets. It looked reasonable, and it was wrong: a proper backtest showed the stop mechanism was bleeding away the exact edge it was supposed to protect. I rebuilt the exit logic around holding longer with a wide disaster-stop instead, and the redesigned system now beats the Nifty 500 by an estimated <strong>+3.32% per pick before costs</strong> (<strong>+2.82% net</strong> of an assumed 0.5% round-trip cost), verified two independent ways. It's still early: one market regime, survivorship-biased sample, and I say so below, not after.</p>
   </div>
 
-  <section>
+  <section class="reveal">
     <div class="s-label">The problem</div>
     <h2>Retail trading advice is untestable noise</h2>
     <p>Every finance Telegram channel has a "buy this, target that" call. None of them show you the losing calls, the drawdown, or what happens if you'd mechanically followed every pick for a year. I wanted the opposite: a system I could actually grade, rules-based, interpretable, and backtested against the index it's trying to beat, not trusted on faith.</p>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="s-label">What I built</div>
     <h2>A nightly scanner, not a tip sheet</h2>
     <p>After market close it pulls NSE bhavcopy and delivery data into SQLite, computes ~15 technical and volume indicators per stock, and scores every name in the Nifty 500 on a single positional trend horizon, held roughly 60 trading days. Names are partitioned by market-cap tier (large, mid and small cap) so a handful of volatile small-caps can't swamp the list. A same-day Gemini pass tags news sentiment and broker calls. The composite ranks a cap-tier-partitioned, sector-capped Top-9, emailed daily with position levels attached.</p>
@@ -171,7 +243,7 @@ footer a:hover{color:var(--lime)}
     <p>None of that is the interesting part of this story. The interesting part is what happened when I stopped trusting the scoring and started backtesting the exits.</p>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="s-label">The pivot</div>
     <h2>The first design looked disciplined. It wasn't.</h2>
     <p>Version one was a classic swing-trading setup: a fixed profit target, a tight stop, and a minimum 2:1 reward-to-risk filter before a name even qualified for the daily Top-N. On paper that's textbook risk management. Hold for a week or two, cut losers fast, let a favorable R:R do the work.</p>
@@ -194,7 +266,7 @@ footer a:hover{color:var(--lime)}
     </ul>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="s-label">Did it work</div>
     <h2>Verified two ways, not asserted once</h2>
     <p>I don't trust a single backtest number, so the current alpha is computed two independent ways: a direct mean-return comparison against the benchmark, and a separate trade-by-trade ledger simulation. Both land on the same net figure, <strong>+2.82% per pick</strong>, to the basis point. If they hadn't matched, I'd have assumed a bug before a discovery.</p>
@@ -213,13 +285,46 @@ footer a:hover{color:var(--lime)}
     </div>
     <p>The headline number is the pre-cost alpha: <strong>+3.32%</strong> per pick against the Nifty 500, which is what most public discussion of a strategy's edge actually means by alpha. Net of an assumed 0.5% round-trip trading cost, a deliberately conservative estimate, it holds up at <strong>+2.82%</strong>, with a t-stat of +7.1, a strong result for a sample this size. Absolute returns look small in places because parts of the backtest window were flat to down for the index. The edge is index-relative, which is the only version of "working" that means anything for a stock-picking system.</p>
     <div class="stat-row">
-      <div class="stat"><div class="stat-num">+3.32%</div><div class="stat-label">Alpha / pick, pre-cost</div></div>
-      <div class="stat"><div class="stat-num">+2.82%</div><div class="stat-label">Alpha / pick, net of cost</div></div>
-      <div class="stat"><div class="stat-num">280d</div><div class="stat-label">Point-in-time backtest</div></div>
+      <div class="stat"><div class="stat-num" data-countup="+3.32" data-suffix="%">+3.32%</div><div class="stat-label">Alpha / pick, pre-cost</div></div>
+      <div class="stat"><div class="stat-num" data-countup="+2.82" data-suffix="%">+2.82%</div><div class="stat-label">Alpha / pick, net of cost</div></div>
+      <div class="stat"><div class="stat-num" data-countup="280" data-suffix="d">280d</div><div class="stat-label">Point-in-time backtest</div></div>
+    </div>
+    <div class="qtr-chart reveal">
+      <div class="qtr-chart-label">Alpha by quarter, net of cost</div>
+      <div class="qtr-row" role="img" aria-label="Quarterly alpha net of cost: 2025 Q3 minus 0.9 percent, 2025 Q4 plus 1.1 percent, 2026 Q1 plus 3.9 percent, 2026 Q2 plus 6.0 percent. The edge strengthens each quarter.">
+        <div class="qtr-col">
+          <div class="qtr-pos"></div>
+          <div class="qtr-baseline"></div>
+          <div class="qtr-neg"><div class="qtr-bar down" style="height:18px"></div></div>
+          <div class="qtr-val neg">-0.9%</div>
+          <div class="qtr-lbl">2025 Q3</div>
+        </div>
+        <div class="qtr-col">
+          <div class="qtr-pos"><div class="qtr-bar up" style="height:12px"></div></div>
+          <div class="qtr-baseline"></div>
+          <div class="qtr-neg"></div>
+          <div class="qtr-val pos">+1.1%</div>
+          <div class="qtr-lbl">2025 Q4</div>
+        </div>
+        <div class="qtr-col">
+          <div class="qtr-pos"><div class="qtr-bar up" style="height:42px"></div></div>
+          <div class="qtr-baseline"></div>
+          <div class="qtr-neg"></div>
+          <div class="qtr-val pos">+3.9%</div>
+          <div class="qtr-lbl">2026 Q1</div>
+        </div>
+        <div class="qtr-col">
+          <div class="qtr-pos"><div class="qtr-bar up" style="height:60px"></div></div>
+          <div class="qtr-baseline"></div>
+          <div class="qtr-neg"></div>
+          <div class="qtr-val pos">+6.0%</div>
+          <div class="qtr-lbl">2026 Q2</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="s-label">What else the data taught me</div>
     <h2>Rigor mostly means saying no to yourself</h2>
     <p>The pivot was the headline finding, but the same discipline applied everywhere else turned up smaller, equally important results, including a few ideas that looked promising and did not survive scrutiny.</p>
@@ -238,10 +343,10 @@ footer a:hover{color:var(--lime)}
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="s-label">How it's validated</div>
     <h2>Backtest design</h2>
-    <p>The backtest reuses the exact production scoring and indicator code, no separate reimplementation to drift out of sync with what's actually emailed. It's point-in-time and spot-checked for lookahead: on any given day, only data that would have actually been available that evening feeds the score. Every live pick is also graded automatically against the Nifty 500 as it matures, so the backtest isn't the only proof. There's a running, real-time track record behind it too.</p>
+    <p>The backtest reuses the exact production scoring and indicator code, no separate reimplementation to drift out of sync with what's actually emailed. It's point-in-time and spot-checked for lookahead: on any given day, only data that would have actually been available that evening feeds the score. <span class="live-dot"></span>Every live pick is also graded automatically against the Nifty 500 as it matures, so the backtest isn't the only proof. There's a running, real-time track record behind it too.</p>
     <details>
       <summary>Show backtest internals</summary>
       <div class="details-body">
@@ -253,7 +358,7 @@ footer a:hover{color:var(--lime)}
     </details>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="s-label">Honest limitations</div>
     <h2>Where I'd push back on my own numbers</h2>
     <div class="caveat">
@@ -267,7 +372,7 @@ footer a:hover{color:var(--lime)}
     </ul>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="s-label">What's next</div>
     <h2>Still building</h2>
     <ul class="plain">
@@ -287,5 +392,50 @@ footer a:hover{color:var(--lime)}
   <a href="/">← Back to palnag.in</a> &nbsp;·&nbsp; Private repository, walkthrough available on request
 </footer>
 
+<script>
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+// ── SCROLL REVEAL ──
+if(reduce){
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+}else{
+  const revealObs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('visible');
+  }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+}
+
+// ── COUNT-UP STATS ──
+function animateCountUp(el){
+  const raw=el.getAttribute('data-countup');
+  const suffix=el.getAttribute('data-suffix')||'';
+  const target=parseFloat(raw);
+  const decimals=(raw.split('.')[1]||'').length;
+  const hasPlus=raw.trim().startsWith('+');
+  const dur=900,start=performance.now();
+  function tick(now){
+    const p=Math.min((now-start)/dur,1);
+    const eased=1-Math.pow(1-p,3);
+    const val=target*eased;
+    const sign=val<0?'-':(hasPlus?'+':'');
+    el.textContent=sign+Math.abs(val).toFixed(decimals)+suffix;
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+if(reduce){
+  document.querySelectorAll('[data-countup]').forEach(el=>{
+    el.textContent=el.getAttribute('data-countup')+(el.getAttribute('data-suffix')||'');
+  });
+}else{
+  const countObs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){animateCountUp(e.target);countObs.unobserve(e.target)}
+  }),{threshold:.4});
+  document.querySelectorAll('[data-countup]').forEach(el=>{
+    el.textContent='0'+(el.getAttribute('data-suffix')||'');
+    countObs.observe(el);
+  });
+}
+</script>
 </body>
 </html>
