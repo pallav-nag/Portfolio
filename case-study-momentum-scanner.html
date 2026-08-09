@@ -188,23 +188,23 @@ footer a:hover{color:var(--lime)}
 <div class="ticker-wrap" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item">Nifty 500 · Positional Trend <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Alpha +3.32% Pre-cost <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">+2.82% Net of Cost <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Alpha +3.29% Pre-cost <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">+2.79% Net of Cost <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Win Rate 46.7% <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">T-Stat +7.1 <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">T-Stat +7.0 <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Hold 60 Trading Days <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">280d Backtest <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">1,610 Trades <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">281d Backtest <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">1,620 Trades <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Cap-Tier Partitioned <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Edge Stable <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Nifty 500 · Positional Trend <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">Alpha +3.32% Pre-cost <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">+2.82% Net of Cost <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">Alpha +3.29% Pre-cost <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">+2.79% Net of Cost <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Win Rate 46.7% <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">T-Stat +7.1 <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">T-Stat +7.0 <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Hold 60 Trading Days <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">280d Backtest <span class="ticker-sep">✦</span></span>
-    <span class="ticker-item">1,610 Trades <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">281d Backtest <span class="ticker-sep">✦</span></span>
+    <span class="ticker-item">1,620 Trades <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Cap-Tier Partitioned <span class="ticker-sep">✦</span></span>
     <span class="ticker-item">Edge Stable <span class="ticker-sep">✦</span></span>
   </div>
@@ -214,11 +214,11 @@ footer a:hover{color:var(--lime)}
   <div class="eyebrow"><span class="eyebrow-dot"></span> Case study · Quant + AI</div>
   <h1>The Backtest That Changed the Strategy</h1>
   <p class="subtitle">How point-in-time validation on a Nifty 500 momentum scanner killed a tight-stop swing design, and what replaced it, verified two independent ways.</p>
-  <div class="meta">By <span>Pallav Nag</span> · <span>Aug 2026</span> · <span>~6 min read</span></div>
+  <div class="meta">By <span>Pallav Nag</span> · <span>Aug 2026</span> · <span>updated Aug 9</span> · <span>~7 min read</span></div>
 
   <div class="tldr reveal">
     <div class="tldr-label">TL;DR</div>
-    <p>I built a rules-based scanner that ranks the Nifty 500 every evening on ~15 technical/volume signals, partitioned across large, mid and small cap. The first version used tight stops and fixed profit targets. It looked reasonable, and it was wrong: a proper backtest showed the stop mechanism was bleeding away the exact edge it was supposed to protect. I rebuilt the exit logic around holding longer with a wide disaster-stop instead, and the redesigned system now beats the Nifty 500 by an estimated <strong>+3.32% per pick before costs</strong> (<strong>+2.82% net</strong> of an assumed 0.5% round-trip cost), verified two independent ways. It's still early: one market regime, survivorship-biased sample, and I say so below, not after.</p>
+    <p>I built a rules-based scanner that ranks the Nifty 500 every evening on ~15 technical/volume signals, partitioned across large, mid and small cap. The first version used tight stops and fixed profit targets. It looked reasonable, and it was wrong: a proper backtest showed the stop mechanism was bleeding away the exact edge it was supposed to protect. I rebuilt the exit logic around holding longer with a wide disaster-stop instead, and the redesigned system now beats the Nifty 500 by an estimated <strong>+3.29% per pick before costs</strong> (<strong>+2.79% net</strong> of an assumed 0.5% round-trip cost), verified two independent ways. It's still early and still moving: one market regime, a survivorship-biased sample, and fixes landing most weeks. I say so below, not after.</p>
   </div>
 
   <section class="reveal">
@@ -269,29 +269,29 @@ footer a:hover{color:var(--lime)}
   <section class="reveal">
     <div class="s-label">Did it work</div>
     <h2>Verified two ways, not asserted once</h2>
-    <p>I don't trust a single backtest number, so the current alpha is computed two independent ways: a direct mean-return comparison against the benchmark, and a separate trade-by-trade ledger simulation. Both land on the same net figure, <strong>+2.82% per pick</strong>, to the basis point. If they hadn't matched, I'd have assumed a bug before a discovery.</p>
+    <p>I don't trust a single backtest number, so the current alpha is computed two independent ways: a direct mean-return comparison against the benchmark, and a separate trade-by-trade ledger simulation. Both land on the same net figure, <strong>+2.79% per pick</strong>, to the basis point. If they hadn't matched, I'd have assumed a bug before a discovery.</p>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Metric</th><th>Value</th></tr></thead>
         <tbody>
-          <tr><td>Mean pick return, 60-day hold, net of cost</td><td class="pos">+1.89%</td></tr>
-          <tr><td>Nifty 500 buy-and-hold, same windows</td><td>-0.93%</td></tr>
-          <tr><td>Alpha per pick, net of cost</td><td class="pos">+2.82%</td></tr>
-          <tr><td>Alpha per pick, before cost</td><td class="pos">+3.32%</td></tr>
+          <tr><td>Mean pick return, 60-day hold, net of cost</td><td class="pos">+1.90%</td></tr>
+          <tr><td>Nifty 500 buy-and-hold, same windows</td><td>-0.89%</td></tr>
+          <tr><td>Alpha per pick, net of cost</td><td class="pos">+2.79%</td></tr>
+          <tr><td>Alpha per pick, before cost</td><td class="pos">+3.29%</td></tr>
           <tr><td>Picks that beat the index</td><td>46.7%</td></tr>
-          <tr><td>Statistical significance (t-stat)</td><td>+7.1</td></tr>
+          <tr><td>Statistical significance (t-stat)</td><td>+7.0</td></tr>
         </tbody>
       </table>
     </div>
-    <p>The headline number is the pre-cost alpha: <strong>+3.32%</strong> per pick against the Nifty 500, which is what most public discussion of a strategy's edge actually means by alpha. Net of an assumed 0.5% round-trip trading cost, a deliberately conservative estimate, it holds up at <strong>+2.82%</strong>, with a t-stat of +7.1, a strong result for a sample this size. Absolute returns look small in places because parts of the backtest window were flat to down for the index. The edge is index-relative, which is the only version of "working" that means anything for a stock-picking system.</p>
+    <p>The headline number is the pre-cost alpha: <strong>+3.29%</strong> per pick against the Nifty 500, which is what most public discussion of a strategy's edge actually means by alpha. Net of an assumed 0.5% round-trip trading cost, a deliberately conservative estimate, it holds up at <strong>+2.79%</strong>, with a t-stat of +7.0, a strong result for a sample this size. Absolute returns look small in places because parts of the backtest window were flat to down for the index. The edge is index-relative, which is the only version of "working" that means anything for a stock-picking system.</p>
     <div class="stat-row">
-      <div class="stat"><div class="stat-num" data-countup="+3.32" data-suffix="%">+3.32%</div><div class="stat-label">Alpha / pick, pre-cost</div></div>
-      <div class="stat"><div class="stat-num" data-countup="+2.82" data-suffix="%">+2.82%</div><div class="stat-label">Alpha / pick, net of cost</div></div>
-      <div class="stat"><div class="stat-num" data-countup="280" data-suffix="d">280d</div><div class="stat-label">Point-in-time backtest</div></div>
+      <div class="stat"><div class="stat-num" data-countup="+3.29" data-suffix="%">+3.29%</div><div class="stat-label">Alpha / pick, pre-cost</div></div>
+      <div class="stat"><div class="stat-num" data-countup="+2.79" data-suffix="%">+2.79%</div><div class="stat-label">Alpha / pick, net of cost</div></div>
+      <div class="stat"><div class="stat-num" data-countup="281" data-suffix="d">281d</div><div class="stat-label">Point-in-time backtest</div></div>
     </div>
     <div class="qtr-chart reveal">
       <div class="qtr-chart-label">Alpha by quarter, net of cost</div>
-      <div class="qtr-row" role="img" aria-label="Quarterly alpha net of cost: 2025 Q3 minus 0.9 percent, 2025 Q4 plus 1.1 percent, 2026 Q1 plus 3.9 percent, 2026 Q2 plus 6.0 percent. The edge strengthens each quarter.">
+      <div class="qtr-row" role="img" aria-label="Quarterly alpha net of cost: 2025 Q3 minus 0.9 percent, 2025 Q4 plus 1.1 percent, 2026 Q1 plus 3.9 percent, 2026 Q2 plus 5.7 percent. The edge strengthens each quarter.">
         <div class="qtr-col">
           <div class="qtr-pos"></div>
           <div class="qtr-baseline"></div>
@@ -317,7 +317,7 @@ footer a:hover{color:var(--lime)}
           <div class="qtr-pos"><div class="qtr-bar up" style="height:60px"></div></div>
           <div class="qtr-baseline"></div>
           <div class="qtr-neg"></div>
-          <div class="qtr-val pos">+6.0%</div>
+          <div class="qtr-val pos">+5.7%</div>
           <div class="qtr-lbl">2026 Q2</div>
         </div>
       </div>
@@ -350,19 +350,35 @@ footer a:hover{color:var(--lime)}
     <details>
       <summary>Show backtest internals</summary>
       <div class="details-body">
-        <p><strong>Sample:</strong> 280 trading days (2025-06-19 to 2026-08-06), current Nifty 500 constituents partitioned into large, mid and small cap, 1,610 completed Top-9 trades on the single Trend sleeve.</p>
-        <p><strong>Reconciliation:</strong> alpha computed by a direct mean pick-return-vs-benchmark comparison, and independently by a trade-by-trade ledger simulation. Both return the same net alpha, +2.82% per pick, t = +7.1.</p>
-        <p><strong>Drift check:</strong> rolling quarterly alpha strengthened through the sample, from -0.9% in the earliest quarter to +6.0% in the most recent one; the most recent 536 trades still show +6.23%. Standing verdict: edge stable, rechecked weekly rather than trusted as a one-time result.</p>
+        <p><strong>Sample:</strong> 281 trading days (2025-06-19 to 2026-08-07), current Nifty 500 constituents partitioned into large, mid and small cap, 1,620 completed Top-9 trades on the single Trend sleeve.</p>
+        <p><strong>Reconciliation:</strong> alpha computed by a direct mean pick-return-vs-benchmark comparison, and independently by a trade-by-trade ledger simulation. Both return the same net alpha, +2.79% per pick, t = +7.0.</p>
+        <p><strong>Drift check:</strong> rolling quarterly alpha strengthened through the sample, from -0.9% in the earliest quarter to +5.7% in the most recent one; the most recent 540 trades still show +6.11%. Standing verdict: edge stable, rechecked weekly rather than trusted as a one-time result.</p>
+        <p><strong>Downside read:</strong> per-trade information ratio +0.17; worst rolling 50-trade stretch -4.12%. Treat that as an honest lower bound, not a real drawdown curve, the ~60-day holds overlap too heavily for a clean equity curve.</p>
         <p><strong>What's deliberately excluded:</strong> the news/broker layer stays a downside-only gate, not a weighted input, because it hasn't earned one in testing. A separate monthly fundamentals overlay exists and is validated independently, not blended into these numbers.</p>
       </div>
     </details>
   </section>
 
   <section class="reveal">
+    <div class="s-label">Under the hood</div>
+    <h2>Running unattended on a personal Mac is its own bug class</h2>
+    <p>The scoring logic is the visible half of this project. The other half is making sure it actually fires every trading evening with nobody watching it, and that surfaces a different kind of bug than a bad indicator: a dropped connection, a missing week-marker, or a machine that fell asleep at the wrong minute.</p>
+    <ul class="plain">
+      <li><strong>No retry meant no email.</strong> An NSE fetch hit a plain connection reset with nothing to catch it, the run exited non-zero, and that evening's picks silently never went out until a manual re-run caught it hours later. Fixed with a shared retry wrapper around every NSE fetcher, three attempts with a 5-then-15-second backoff. 404s are deliberately excluded from the retry, since that's usually a real non-trading day, not a transient failure, and retrying it would just mask a genuinely changed URL.</li>
+      <li><strong>A missing week-marker sent the same trade list four times.</strong> The weekly execution job only recorded that it had run when there was something new to buy. In a quiet week, every held name already qualifying, that guard never tripped, so it silently re-ran and re-emailed Tuesday through Friday, and only the first copy carried the sell side. Fixed by writing the marker after the email actually sends, independent of whether that week's decision was to buy anything.</li>
+      <li><strong>An unindexed table turned every score into a full scan.</strong> The price table had no index on symbol and date, so ranking 500 stocks against months of history did a full table scan per name on every run. A composite index took a full-universe read from 4.4 seconds to 0.05, and it doubles as a real constraint now: a duplicate row for the same stock and day, the exact bug class that once silently corrupted a week of rolling indicators, fails loudly instead of writing.</li>
+    </ul>
+    <div class="callout warn">
+      <div class="callout-label">Still open</div>
+      <p>None of this fires if the Mac is on battery: macOS won't honor a scheduled wake without AC power, and there's still no network-readiness check before the pipeline starts, so a run can fire into a machine that hasn't finished reconnecting after waking. Known, tracked, not fixed yet.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
     <div class="s-label">Honest limitations</div>
     <h2>Where I'd push back on my own numbers</h2>
     <div class="caveat">
-      Index-relative alpha, market-neutral, cross-checked by two independent backtest methods. Numbers above are pre-cost; net of an assumed 0.5% round-trip cost, alpha is +2.82%. Caveats, stated plainly: survivorship-biased, single regime.
+      Index-relative alpha, market-neutral, cross-checked by two independent backtest methods. Numbers above are pre-cost; net of an assumed 0.5% round-trip cost, alpha is +2.79%. Caveats, stated plainly: survivorship-biased, single regime.
     </div>
     <ul class="plain">
       <li><strong>Survivorship bias.</strong> The backtest universe is today's Nifty 500 constituents. Names that got delisted, demoted, or blew up along the way aren't in the sample, which biases the results optimistic.</li>
